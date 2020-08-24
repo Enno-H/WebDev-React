@@ -2,12 +2,12 @@ import React, {Component} from "react";
 import {Card, CardBody, CardImg, CardText, CardTitle} from "reactstrap";
 
 class Dishdetail extends Component {
+    /*
+    Has no local state, and is purely dependent on rendering its view based on the props that is passed on it.
+    Acts as a pure presentational component.
+     */
     constructor(props) {
         super(props);
-
-        this.state = {
-            selectedDish: null
-        }
     }
 
     renderComments(comments) {
@@ -44,22 +44,24 @@ class Dishdetail extends Component {
     }
 
     render() {
-        const dish = this.props.selectedDish;
+        const dish = this.props.dish;
 
         if (dish != null) {
             return (
-                <div className="row">
-                    <div className={"col-12 col-md-5 m-1"}>
-                        <Card>
-                            <CardImg top src={dish.image} alt={dish.name}/>
-                            <CardBody>
-                                <CardTitle>{dish.name}</CardTitle>
-                                <CardText>{dish.description}</CardText>
-                            </CardBody>
-                        </Card>
-                    </div>
-                    <div className={"col-12 col-md-5 m-1"}>
-                        {this.renderComments(dish.comments)}
+                <div className="container">
+                    <div className="row">
+                        <div className={"col-12 col-md-5 m-1"}>
+                            <Card>
+                                <CardImg top src={dish.image} alt={dish.name}/>
+                                <CardBody>
+                                    <CardTitle>{dish.name}</CardTitle>
+                                    <CardText>{dish.description}</CardText>
+                                </CardBody>
+                            </Card>
+                        </div>
+                        <div className={"col-12 col-md-5 m-1"}>
+                            {this.renderComments(dish.comments)}
+                        </div>
                     </div>
                 </div>
             )
