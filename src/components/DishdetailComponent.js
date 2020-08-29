@@ -43,6 +43,18 @@ class Dishdetail extends Component {
             );
     }
 
+    renderDish(dish) {
+        return (
+            <Card>
+                <CardImg top src={dish.image} alt={dish.name}/>
+                <CardBody>
+                    <CardTitle>{dish.name}</CardTitle>
+                    <CardText>{dish.description}</CardText>
+                </CardBody>
+            </Card>
+        )
+    }
+
     render() {
         const dish = this.props.dish;
 
@@ -51,13 +63,7 @@ class Dishdetail extends Component {
                 <div className="container">
                     <div className="row">
                         <div className={"col-12 col-md-5 m-1"}>
-                            <Card>
-                                <CardImg top src={dish.image} alt={dish.name}/>
-                                <CardBody>
-                                    <CardTitle>{dish.name}</CardTitle>
-                                    <CardText>{dish.description}</CardText>
-                                </CardBody>
-                            </Card>
+                            {this.renderDish(dish)}
                         </div>
                         <div className={"col-12 col-md-5 m-1"}>
                             {this.renderComments(dish.comments)}
@@ -65,10 +71,12 @@ class Dishdetail extends Component {
                     </div>
                 </div>
             )
-        } else
+        }
+        else {
             return (
                 <div></div>
             );
+        }
     }
 
 
